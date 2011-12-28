@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLiteBrowserNet", "SQLiteBrowserNet\SQLiteBrowserNet.csproj", "{881871AD-96B9-403A-9F7B-EE9AFCE93E5D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7A875A08-369E-45B9-BF12-3DB004646AA8}"
+	ProjectSection(SolutionItems) = preProject
+		todo.txt = todo.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{881871AD-96B9-403A-9F7B-EE9AFCE93E5D}.Debug|x86.ActiveCfg = Debug|x86
+		{881871AD-96B9-403A-9F7B-EE9AFCE93E5D}.Debug|x86.Build.0 = Debug|x86
+		{881871AD-96B9-403A-9F7B-EE9AFCE93E5D}.Release|x86.ActiveCfg = Release|x86
+		{881871AD-96B9-403A-9F7B-EE9AFCE93E5D}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

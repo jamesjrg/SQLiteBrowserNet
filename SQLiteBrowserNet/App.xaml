@@ -1,0 +1,9 @@
+﻿<Application x:Class="SQLiteBrowserNet.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:s="clr-namespace:System;assembly=mscorlib"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <s:String x:Key="AppTitle">SQLiteBrowserNet</s:String>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,40 @@
+todo now:
+- create a control for results/messages bottom section
+- make an editable results pane which is bound to a sqllite database
+
+to run requires:
+.NET 4 client profile
+
+to compile requires:
+.NET 4
+System.Data.SQLite
+
+Plan:
+- much like current sqlserver browser, include all the features it does
+
+UI:
+- two bars at top, one is always constant (file, view, help, etc), the other is context sensitive depending on whether focus in object explorer, query window, or results window
+- context sensitive things for query: open, save, run, cancel. for results: export, select all, copy, copy with headers. for obj explorer win: view top 200, view all, edit top 200
+- have undo/redo for query windows
+- rest v similar to msssms - object explorer on left, tabbed query windows windows on top, tabbed results panes and messages panes on bottom. rather than having properties windows from object epxlorer open in new windows, make them open tabs in top section. also, no properties window on right.
+- ideally the various sections are hidable/dockable/resizable/etc
+
+stuff:
+- grey out menu items and toolbar icons when not useable
+- tooltips for toolbare and tree and long items in results
+- don't hang if query when not connected to db
+- don't hang if enter invalid sql, e.g. select * from foo where isnull(bar)
+- allow select/copy/export of result sets
+- exporting either data or result sets give options of ascii, utf, csv ascii, cvs utf8 etc
+- support foreign keys
+- recent databases menu option
+- work with tables that have names like at::GeotechnicalMeasurementPoint
+- make browser work with tables named "group", and with tables named "8digit"
+- allow adding a field named "delete"
+- save/load queries
+- tabbed query windows
+- view top 100/1000/all results in browser
+- also, look at sql server management studio for other ideas
+
+implementation details:
+- have unit tests

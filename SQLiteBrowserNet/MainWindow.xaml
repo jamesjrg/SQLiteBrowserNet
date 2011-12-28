@@ -1,0 +1,49 @@
+﻿<Window x:Class="SQLiteBrowserNet.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:SQLiteBrowserNet"
+        Title="{StaticResource AppTitle}" Height="350" Width="525">
+    <StackPanel>
+        <Menu Height="23" HorizontalAlignment="Stretch" Name="menu1" VerticalAlignment="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New database" />
+                <MenuItem Header="_Open database" />
+                <MenuItem Header="_Close database" />
+                <Separator />
+                <MenuItem Header="_Save database" />
+                <MenuItem Header="_Revert database" />
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="_Something" />
+            </MenuItem>
+            <MenuItem Header="_View">
+                <MenuItem Header="_Something" />
+            </MenuItem>
+            <MenuItem Header="_Tools">
+                <MenuItem Header="_Compact database" />
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <Separator />
+                <MenuItem Header="_About" />
+            </MenuItem>
+        </Menu>
+        <ToolBarTray Height="26" Name="toolBarTray1">
+            <ToolBar Name="toolBar1" RenderOptions.BitmapScalingMode="NearestNeighbor">
+                <Button><Image Source="Resources/NewDocumentHS.png" /></Button>
+                <Button><Image Source="Resources/openHS.png" /></Button>
+            </ToolBar>
+        </ToolBarTray>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <local:ObjectExplorer Grid.RowSpan="2" />
+            <local:QueryTabs Grid.Column="1"/>
+        </Grid>        
+    </StackPanel>
+</Window>
