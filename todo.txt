@@ -1,5 +1,4 @@
 todo now:
-- create a control for results/messages bottom section
 - make an editable results pane which is bound to a sqllite database
 
 to run requires:
@@ -16,8 +15,9 @@ UI:
 - two bars at top, one is always constant (file, view, help, etc), the other is context sensitive depending on whether focus in object explorer, query window, or results window
 - context sensitive things for query: open, save, run, cancel. for results: export, select all, copy, copy with headers. for obj explorer win: view top 200, view all, edit top 200
 - have undo/redo for query windows
-- rest v similar to msssms - object explorer on left, tabbed query windows windows on top, tabbed results panes and messages panes on bottom. rather than having properties windows from object epxlorer open in new windows, make them open tabs in top section. also, no properties window on right.
+- rest v similar to msssms - object explorer on left, tabbed query windows windows on top, tabbed results panes and messages panes on bottom. rather than having properties windows from object epxlorer open in new windows, make them open tabs in bottom section as well. also, no properties window on right.
 - ideally the various sections are hidable/dockable/resizable/etc
+- to query either results or schema of anything in tree, can either right click on tree, or use icon#
 
 stuff:
 - grey out menu items and toolbar icons when not useable

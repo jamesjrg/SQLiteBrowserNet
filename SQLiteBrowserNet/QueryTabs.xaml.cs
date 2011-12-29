@@ -23,5 +23,9 @@ namespace SQLiteBrowserNet
         {
             InitializeComponent();
         }
+
+        public void NewQuery()
+        {
+        }
     }
 }

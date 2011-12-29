@@ -11,6 +11,7 @@
                 <MenuItem Header="_Close database" />
                 <Separator />
                 <MenuItem Header="_Save database" />
+                <MenuItem Header="_Save database as..." />
                 <MenuItem Header="_Revert database" />
             </MenuItem>
             <MenuItem Header="_Edit">
@@ -27,23 +28,29 @@
                 <MenuItem Header="_About" />
             </MenuItem>
         </Menu>
-        <ToolBarTray Height="26" Name="toolBarTray1">
-            <ToolBar Name="toolBar1" RenderOptions.BitmapScalingMode="NearestNeighbor">
+        <ToolBarTray Name="toolBarTray1">
+            <ToolBar Name="toolBar1" Height="30">
                 <Button><Image Source="Resources/NewDocumentHS.png" /></Button>
                 <Button><Image Source="Resources/openHS.png" /></Button>
             </ToolBar>
         </ToolBarTray>
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <local:ObjectExplorer Grid.RowSpan="2" />
-            <local:QueryTabs Grid.Column="1"/>
+            <local:ObjectExplorer />
+            <GridSplitter Grid.Column="0" Width="5" />
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <local:QueryTabs />
+                <GridSplitter Grid.Row="0" VerticalAlignment="Bottom"
+                          HorizontalAlignment="Stretch" Height="5" />
+                <local:ResultsTabs Grid.Row="1"/>
+            </Grid>
         </Grid>        
     </StackPanel>
 </Window>
