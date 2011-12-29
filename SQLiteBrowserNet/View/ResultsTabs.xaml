@@ -3,22 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="300">
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary Source="../XAMLResources.xaml" />
+    </UserControl.Resources>
     <Grid>
-        <TabControl Name="tabControl">
-            <TabItem Header="results1" Name="resultsTab1">
-                <DataGrid Name="resultsGrid1" />
-            </TabItem>
-            <TabItem Header="results2" Name="resultsTab2">
-                <DataGrid Name="resultsGrid2"  />
-            </TabItem>
-            <TabItem Header="schema1" Name="schemaTab1">
-                <ListView Name="schemaList1"  />
-            </TabItem>
-            <TabItem Header="Messages" Name="messagesTab">
-                <ListView Name="messagesList"  />
-            </TabItem>
-        </TabControl>
+        <TabControl Name="tabControl"
+                    ItemsSource="{Binding Path=Results}"/>
     </Grid>
 </UserControl>

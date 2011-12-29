@@ -17,8 +17,11 @@
                 <MenuItem Header="_Close database" />
                 <Separator />
                 <MenuItem Header="_Save database" />
-                <MenuItem Header="_Save database as..." />
-                <MenuItem Header="_Revert database" />
+                <MenuItem Header="Save database as..." />
+                <MenuItem Header="Revert database" />
+                <Separator />
+                <MenuItem Header="Recent _Files" />
+                <MenuItem Header="E_xit" />
             </MenuItem>
             <MenuItem Header="_Edit">
                 <MenuItem Header="Undo" />

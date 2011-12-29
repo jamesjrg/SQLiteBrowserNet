@@ -19,21 +19,28 @@ namespace SQLiteBrowserNet
     {
         public static RoutedCommand ExecuteQueryCommand = new RoutedCommand();
 
-        private QueryTabsVM queryTabsVM = new QueryTabsVM();
-        private DbConn conn = new DbConn();
-
+        DbConn _conn = new DbConn();
+        QueryTabsVM _queryTabsVM = new QueryTabsVM();
+        ResultsTabsVM _resultsTabsVM = new ResultsTabsVM();
+        
         public MainWindow()
         {
             InitializeComponent();
+            queryTabs.DataContext = _queryTabsVM;
+            resultsTabs.DataContext = _resultsTabsVM;
+            
             OpenDB("../../../Japanese Kana.anki");
             ExecutedExecuteQueryCommand(null, null);
+            _queryTabsVM.NewQuery();
+            _queryTabsVM.NewQuery();
+            _resultsTabsVM.NewResult(_conn);
         }
 
         private void OpenDB(string path)
         {
             try
             {
-                conn.Connect(path);
+                _conn.Connect(path);
             }
             catch (Exception e)
             {
@@ -43,9 +50,7 @@ namespace SQLiteBrowserNet
 
         private void ExecutedExecuteQueryCommand(object sender, ExecutedRoutedEventArgs e)
         {
-            DataTable results = conn.ExecuteQuery("SELECT * FROM tags");
-            resultsTabs.resultsGrid1.ItemsSource = results.DefaultView;
-            resultsTabs.tabControl.Items.Add(new TabItem());
+            _resultsTabsVM.NewResult(_conn);            
         }
 
         private void CanExecuteExecuteQueryCommand(object sender, CanExecuteRoutedEventArgs e)

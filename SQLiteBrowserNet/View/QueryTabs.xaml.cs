@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SQLiteBrowserNet.ViewModel;
 
 namespace SQLiteBrowserNet.View
 {
@@ -22,10 +23,6 @@ namespace SQLiteBrowserNet.View
         public QueryTabs()
         {
             InitializeComponent();
-        }
-
-        public void NewQuery()
-        {
         }
     }
 }

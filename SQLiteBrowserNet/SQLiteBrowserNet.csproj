@@ -60,6 +60,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Db\DbConn.cs" />
+    <Compile Include="Model\Query.cs" />
+    <Compile Include="Model\Results.cs" />
+    <Compile Include="ViewModel\ResultsTabsVM.cs" />
     <Compile Include="View\QueryTabs.xaml.cs">
       <DependentUpon>QueryTabs.xaml</DependentUpon>
     </Compile>
@@ -79,6 +82,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="XAMLResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ObjectExplorer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

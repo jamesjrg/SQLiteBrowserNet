@@ -1,7 +1,8 @@
 todo now:
-- bind query windows to query objects in viewmodel
-- make execute query use currently selected tab query text to run query
-- add some unit tests, and then start doing write test first programming
+- make resultstabs support results, schema and messages tabs via binding
+- make execute query use currently selected tab query text to run query, and make it open in a new results tab
+- messages tab should always be at end of results tabs
+- add some unit tests, and perhaps start doing write test first programming
 
 Plan:
 - a bit of a cross between sqlitebrowser and SQL Sever Management Studio, including features from both (where applicable)
@@ -34,6 +35,10 @@ stuff:
 - tabbed query windows
 - view top 100/1000/all results in browser
 - also, look at sql server management studio for other ideas
+- many commands should be available in menu, in menu with shortcut, via own app-wide shortcut, and via right clicking
+- make resizing with grid splitters work properly at all times
+- results panes should be read only, but still selectable and copyable
+- messages in messages tab should have icons
 
 to run requires:
 .NET 4 client profile
