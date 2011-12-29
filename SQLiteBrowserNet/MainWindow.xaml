@@ -2,7 +2,13 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:SQLiteBrowserNet"
+        xmlns:view="clr-namespace:SQLiteBrowserNet.View"
         Title="{StaticResource AppTitle}" Height="350" Width="525">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MainWindow.ExecuteQueryCommand}"
+                    Executed="ExecutedExecuteQueryCommand"
+                    CanExecute="CanExecuteExecuteQueryCommand" />
+    </Window.CommandBindings>
     <StackPanel>
         <Menu Height="23" HorizontalAlignment="Stretch" Name="menu1" VerticalAlignment="Top">
             <MenuItem Header="_File">
@@ -15,10 +21,38 @@
                 <MenuItem Header="_Revert database" />
             </MenuItem>
             <MenuItem Header="_Edit">
-                <MenuItem Header="_Something" />
+                <MenuItem Header="Undo" />
+                <MenuItem Header="Redo" />
+                <Separator />
+                <MenuItem Header="Cut" />
+                <MenuItem Header="Copy" />
+                <MenuItem Header="Paste" />
+                <Separator />
+                <MenuItem Header="Select _All" />
+                <Separator />
+                <MenuItem Header="_Find" />
+                <MenuItem Header="Find and _replace" />
+                <Separator />
+                <MenuItem Header="Advanced">
+                    <MenuItem Header="Comment selection" />
+                    <MenuItem Header="Uncomment selection" />
+                    <MenuItem Header="Make uppercase" />
+                    <MenuItem Header="Make lowercase" />
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="_View">
-                <MenuItem Header="_Something" />
+                <MenuItem Header="_Word wrap" />
+            </MenuItem>
+            <MenuItem Header="_Query">
+                <MenuItem Header="Execute" Command="{x:Static local:MainWindow.ExecuteQueryCommand}"/>
+                <MenuItem Header="Cancel Executing Query" />
+                <Separator />
+                <MenuItem Header="_New Query" />
+                <MenuItem Header="_Open Query" />
+                <MenuItem Header="_Close Query" />
+                <Separator />
+                <MenuItem Header="_Save Query" />
+                <MenuItem Header="_Save Query _As..." />                
             </MenuItem>
             <MenuItem Header="_Tools">
                 <MenuItem Header="_Compact database" />
@@ -39,17 +73,17 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <local:ObjectExplorer />
+            <view:ObjectExplorer />
             <GridSplitter Grid.Column="0" Width="5" />
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <local:QueryTabs />
+                <view:QueryTabs x:Name="queryTabs" />
                 <GridSplitter Grid.Row="0" VerticalAlignment="Bottom"
                           HorizontalAlignment="Stretch" Height="5" />
-                <local:ResultsTabs Grid.Row="1"/>
+                <view:ResultsTabs x:Name="resultsTabs" Grid.Row="1"/>
             </Grid>
         </Grid>        
     </StackPanel>

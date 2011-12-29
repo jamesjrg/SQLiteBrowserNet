@@ -60,12 +60,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Db\DbConn.cs" />
-    <Compile Include="QueryTabs.xaml.cs">
+    <Compile Include="View\QueryTabs.xaml.cs">
       <DependentUpon>QueryTabs.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ResultsTabs.xaml.cs">
+    <Compile Include="View\ResultsTabs.xaml.cs">
       <DependentUpon>ResultsTabs.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\QueryTabsVM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -78,21 +79,21 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ObjectExplorer.xaml">
+    <Page Include="View\ObjectExplorer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="QueryTabs.xaml">
+    <Page Include="View\QueryTabs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ResultsTabs.xaml">
+    <Page Include="View\ResultsTabs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ObjectExplorer.xaml.cs">
+    <Compile Include="View\ObjectExplorer.xaml.cs">
       <DependentUpon>ObjectExplorer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">

@@ -1,15 +1,10 @@
 todo now:
-- make an editable results pane which is bound to a sqllite database
-
-to run requires:
-.NET 4 client profile
-
-to compile requires:
-.NET 4
-System.Data.SQLite
+- bind query windows to query objects in viewmodel
+- make execute query use currently selected tab query text to run query
+- add some unit tests, and then start doing write test first programming
 
 Plan:
-- much like current sqlserver browser, include all the features it does
+- a bit of a cross between sqlitebrowser and SQL Sever Management Studio, including features from both (where applicable)
 
 UI:
 - two bars at top, one is always constant (file, view, help, etc), the other is context sensitive depending on whether focus in object explorer, query window, or results window
@@ -20,7 +15,11 @@ UI:
 - to query either results or schema of anything in tree, can either right click on tree, or use icon#
 
 stuff:
+- ctrl t / ctrl f4 open/close query tabs, also closing results/schema tabs
+- * in title bar if modified without saving, same with queries
 - grey out menu items and toolbar icons when not useable
+- have shortcut key listed next to each menu item
+- make shortcut keys work
 - tooltips for toolbare and tree and long items in results
 - don't hang if query when not connected to db
 - don't hang if enter invalid sql, e.g. select * from foo where isnull(bar)
@@ -36,5 +35,9 @@ stuff:
 - view top 100/1000/all results in browser
 - also, look at sql server management studio for other ideas
 
-implementation details:
-- have unit tests
+to run requires:
+.NET 4 client profile
+
+to compile requires:
+.NET 4 SDK
+System.Data.SQLite
