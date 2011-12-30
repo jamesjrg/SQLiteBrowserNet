@@ -8,7 +8,17 @@
         <CommandBinding Command="{x:Static local:MainWindow.ExecuteQueryCommand}"
                     Executed="ExecutedExecuteQueryCommand"
                     CanExecute="CanExecuteExecuteQueryCommand" />
+        <CommandBinding Command="{x:Static local:MainWindow.NewQueryCommand}"
+                    Executed="ExecutedNewQueryCommand"
+                    CanExecute="CanExecuteNewQueryCommand" />
+        <CommandBinding Command="{x:Static local:MainWindow.BrowseTableCommand}"
+                    Executed="ExecutedBrowseTableCommand"
+                    CanExecute="CanExecuteBrowseTableCommand" />
     </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Key="F5"
+                    Command="{x:Static local:MainWindow.ExecuteQueryCommand}" />
+    </Window.InputBindings>
     <StackPanel>
         <Menu Height="23" HorizontalAlignment="Stretch" Name="menu1" VerticalAlignment="Top">
             <MenuItem Header="_File">

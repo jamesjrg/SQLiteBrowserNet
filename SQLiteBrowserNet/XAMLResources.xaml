@@ -5,27 +5,25 @@
         <TextBlock Text="{Binding Path=Filename}" />
     </DataTemplate>
     <DataTemplate x:Key="QueryTabContentTemplate">
-        <TextBox />
-    </DataTemplate>
-<!-- 
-    <DataTemplate DataType="{x:Type m:ResultsData}">
-        <TextBlock Text="some results" />
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type m:ResultsData}">
-        <DataGrid />
+        <TextBox Text="{Binding Path=Text, UpdateSourceTrigger=PropertyChanged}"/>
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type m:SchemaData}">
-        <TextBlock Text="some schema" />
+    <DataTemplate x:Key="ResultTabItemTemplate">
+        <StackPanel Orientation="Horizontal">
+            <Image Source="{Binding Path=IconSource}" />
+            <TextBlock Text="{Binding Path=Title}" />
+        </StackPanel>
     </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type m:ResultsData}">
+        <DataGrid ItemsSource="{Binding Path=ResultsTable}"/>
+    </DataTemplate>
+
     <DataTemplate DataType="{x:Type m:SchemaData}">
         <ListView />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type m:MessagesData}">
-        <TextBlock Text="Messages" />
+        <ListView ItemsSource="{Binding Path=MessagesList}"/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type m:MessagesData}">
-        <ListView />
-    </DataTemplate>-->
 </ResourceDictionary>

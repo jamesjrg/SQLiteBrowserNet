@@ -9,6 +9,7 @@
     </UserControl.Resources>
     <Grid>
         <TabControl Name="tabControl"
+                    IsSynchronizedWithCurrentItem="True"
                     ItemsSource="{Binding Path=Queries}"
                     ItemTemplate="{StaticResource QueryTabItemTemplate}"
                     ContentTemplate="{StaticResource QueryTabContentTemplate}"/>

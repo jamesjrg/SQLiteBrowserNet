@@ -18,6 +18,8 @@ namespace SQLiteBrowserNet
     public partial class MainWindow : Window
     {
         public static RoutedCommand ExecuteQueryCommand = new RoutedCommand();
+        public static RoutedCommand BrowseTableCommand = new RoutedCommand();
+        public static RoutedCommand NewQueryCommand = new RoutedCommand();
 
         DbConn _conn = new DbConn();
         QueryTabsVM _queryTabsVM = new QueryTabsVM();
@@ -28,12 +30,12 @@ namespace SQLiteBrowserNet
             InitializeComponent();
             queryTabs.DataContext = _queryTabsVM;
             resultsTabs.DataContext = _resultsTabsVM;
-            
+
             OpenDB("../../../Japanese Kana.anki");
-            ExecutedExecuteQueryCommand(null, null);
-            _queryTabsVM.NewQuery();
-            _queryTabsVM.NewQuery();
-            _resultsTabsVM.NewResult(_conn);
+            ExecutedBrowseTableCommand(null, null);
+            ExecutedBrowseTableCommand(null, null);
+            ExecutedNewQueryCommand(null, null);
+            ExecutedNewQueryCommand(null, null);
         }
 
         private void OpenDB(string path)
@@ -50,11 +52,36 @@ namespace SQLiteBrowserNet
 
         private void ExecutedExecuteQueryCommand(object sender, ExecutedRoutedEventArgs e)
         {
-            _resultsTabsVM.NewResult(_conn);            
+            _resultsTabsVM.NewResult(_conn, _queryTabsVM.GetCurrentText());
         }
 
         private void CanExecuteExecuteQueryCommand(object sender, CanExecuteRoutedEventArgs e)
         {
+            //XXX
+            Control target = e.Source as Control;
+            e.CanExecute = true;
+        }
+
+        private void ExecutedBrowseTableCommand(object sender, ExecutedRoutedEventArgs e)
+        {
+            _resultsTabsVM.NewResult(_conn, "SELECT * FROM tags");
+        }
+
+        private void CanExecuteBrowseTableCommand(object sender, CanExecuteRoutedEventArgs e)
+        {
+            //XXX
+            Control target = e.Source as Control;
+            e.CanExecute = true;
+        }
+
+        private void ExecutedNewQueryCommand(object sender, ExecutedRoutedEventArgs e)
+        {
+            _queryTabsVM.NewQuery();
+        }
+
+        private void CanExecuteNewQueryCommand(object sender, CanExecuteRoutedEventArgs e)
+        {
+            //XXX
             Control target = e.Source as Control;
             e.CanExecute = true;
         }

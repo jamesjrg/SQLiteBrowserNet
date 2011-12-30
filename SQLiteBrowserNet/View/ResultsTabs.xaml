@@ -9,6 +9,9 @@
     </UserControl.Resources>
     <Grid>
         <TabControl Name="tabControl"
-                    ItemsSource="{Binding Path=Results}"/>
+                    IsSynchronizedWithCurrentItem="True"
+                    ItemsSource="{Binding Path=Results}"
+                    ItemTemplate="{StaticResource ResultTabItemTemplate}"
+                    />
     </Grid>
 </UserControl>

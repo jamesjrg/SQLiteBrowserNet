@@ -5,6 +5,8 @@ using System.Collections.ObjectModel;
 using System.Data;
 using SQLiteBrowserNet.Db;
 using SQLiteBrowserNet.Model;
+using System.ComponentModel;
+using System.Windows.Data;
 
 namespace SQLiteBrowserNet.ViewModel
 {
@@ -17,10 +19,14 @@ namespace SQLiteBrowserNet.ViewModel
             get { return _results; }
         }
 
-        public void NewResult(DbConn conn)
+        public void NewResult(DbConn conn, string query)
         {
-            //_results.Add(new ResultsData(conn.ExecuteQuery("SELECT * FROM tags")));
-            //XXX resultsTabs.resultsGrid1.ItemsSource = results.DefaultView;
+            var result = new ResultsData(conn.ExecuteQuery(query));
+            _results.Add(result);
+
+            ICollectionView collectionView = CollectionViewSource.GetDefaultView(_results);
+            if (collectionView != null)
+                collectionView.MoveCurrentTo(result);
         }
     }
 }

@@ -1,7 +1,10 @@
 todo now:
-- make resultstabs support results, schema and messages tabs via binding
-- make execute query use currently selected tab query text to run query, and make it open in a new results tab
-- messages tab should always be at end of results tabs
+- each query tab is associated with its own results tab and messages tab, this requires some rejigging. for browsing tables, make a new query window with equivalent query for browse appear. for editing tables, datagrid appears in a tab in queriestabs, not in results tabs
+
+- messages tab should always appear at end of results tabs or not at all. should have actual sqlite messages. should always exist and never actually have its reference removed from resultstabs list, rather just gets filtered from view if it gets closed. should use try/catch to catch sql errors and display them
+
+- make the basic treeview of database work - tables, indexes, right click to view schema or contents
+
 - add some unit tests, and perhaps start doing write test first programming
 
 Plan:
@@ -21,6 +24,7 @@ stuff:
 - grey out menu items and toolbar icons when not useable
 - have shortcut key listed next to each menu item
 - make shortcut keys work
+- should be able to execute (or otherwise sensibly error) balnk queries, malformed queries, etc
 - tooltips for toolbare and tree and long items in results
 - don't hang if query when not connected to db
 - don't hang if enter invalid sql, e.g. select * from foo where isnull(bar)
@@ -39,7 +43,7 @@ stuff:
 - make resizing with grid splitters work properly at all times
 - results panes should be read only, but still selectable and copyable
 - messages in messages tab should have icons
-
+- maybe merge resultstabs and querytabs classes, and hen eithe give them parameters fro templates, or have a common subclass to the two?
 to run requires:
 .NET 4 client profile
 

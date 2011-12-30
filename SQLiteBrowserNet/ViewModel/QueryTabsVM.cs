@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Collections.ObjectModel;
 using SQLiteBrowserNet.Model;
+using System.ComponentModel;
+using System.Windows.Data;
 
 namespace SQLiteBrowserNet.ViewModel
 {
@@ -13,7 +15,8 @@ namespace SQLiteBrowserNet.ViewModel
 
         public QueryTabsVM()
         {
-            //XXX _queries.CollectionChanged += this.OnWorkspacesChanged;
+            //XXX for closing tabs
+            //_queries.CollectionChanged += this.OnWorkspacesChanged;
         }
 
         public ObservableCollection<Query> Queries
@@ -23,7 +26,18 @@ namespace SQLiteBrowserNet.ViewModel
 
         public void NewQuery()
         {
-            _queries.Add(new Query());
+            var query = new Query();
+            _queries.Add(query);
+
+            ICollectionView collectionView = CollectionViewSource.GetDefaultView(_queries);
+            collectionView.MoveCurrentTo(query);
+        }
+
+        public string GetCurrentText()
+        {
+            ICollectionView collectionView = CollectionViewSource.GetDefaultView(_queries);
+            var query = (Query)collectionView.CurrentItem;
+            return query.Text;
         }
     }
 }
