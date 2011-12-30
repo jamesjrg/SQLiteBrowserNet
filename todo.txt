@@ -1,9 +1,13 @@
 todo now:
-- each query tab is associated with its own results tab and messages tab, this requires some rejigging. for browsing tables, make a new query window with equivalent query for browse appear. for editing tables, datagrid appears in a tab in queriestabs, not in results tabs
+- hide resultstabs by default, until attached query is run
 
-- messages tab should always appear at end of results tabs or not at all. should have actual sqlite messages. should always exist and never actually have its reference removed from resultstabs list, rather just gets filtered from view if it gets closed. should use try/catch to catch sql errors and display them
+- for editing tables, datagrid appears in a tab in queriestabs, not in results tabs.
+
+- messages tab should always appear at end of results tabs or not at all (probably by making the collectionview support sorting). should have actual sqlite messages. should always exist and never actually have its reference removed from resultstabs list, rather just gets filtered from view if it gets closed. should use try/catch to catch sql errors and display them. go to results tab after running query, unless there is an error, in which case hide the results tab and just show the messages tab.
 
 - make the basic treeview of database work - tables, indexes, right click to view schema or contents
+
+- when a query tab is closed, its associated lower tabs also need to be killed
 
 - add some unit tests, and perhaps start doing write test first programming
 
@@ -18,6 +22,16 @@ UI:
 - ideally the various sections are hidable/dockable/resizable/etc
 - to query either results or schema of anything in tree, can either right click on tree, or use icon#
 
+tests should test for (ob much of this is not yet implemented):
+- blank queries
+- erronerous queries - and ensuring error messages correctly appear where they are supposed to
+- trying to open a file which isn't a db
+- querying when no db is open (or rather, make this impossible)
+- all commands and menu options
+- allow adding a field named "delete"
+- work with tables that have names like at::GeotechnicalMeasurementPoint
+- foreign keys
+
 stuff:
 - ctrl t / ctrl f4 open/close query tabs, also closing results/schema tabs
 - * in title bar if modified without saving, same with queries
@@ -26,24 +40,19 @@ stuff:
 - make shortcut keys work
 - should be able to execute (or otherwise sensibly error) balnk queries, malformed queries, etc
 - tooltips for toolbare and tree and long items in results
-- don't hang if query when not connected to db
-- don't hang if enter invalid sql, e.g. select * from foo where isnull(bar)
 - allow select/copy/export of result sets
 - exporting either data or result sets give options of ascii, utf, csv ascii, cvs utf8 etc
-- support foreign keys
 - recent databases menu option
-- work with tables that have names like at::GeotechnicalMeasurementPoint
 - make browser work with tables named "group", and with tables named "8digit"
-- allow adding a field named "delete"
 - save/load queries
-- tabbed query windows
 - view top 100/1000/all results in browser
 - also, look at sql server management studio for other ideas
 - many commands should be available in menu, in menu with shortcut, via own app-wide shortcut, and via right clicking
 - make resizing with grid splitters work properly at all times
 - results panes should be read only, but still selectable and copyable
-- messages in messages tab should have icons
-- maybe merge resultstabs and querytabs classes, and hen eithe give them parameters fro templates, or have a common subclass to the two?
+- messages in messages tab should maybe have icons?
+- result tab and messages tab should have icons
+
 to run requires:
 .NET 4 client profile
 

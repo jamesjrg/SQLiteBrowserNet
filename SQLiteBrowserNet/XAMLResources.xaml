@@ -2,28 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:m="clr-namespace:SQLiteBrowserNet.Model">
     <DataTemplate x:Key="QueryTabItemTemplate">
-        <TextBlock Text="{Binding Path=Filename}" />
+        <TextBlock Text="{Binding Path=Query.Filename}" />
     </DataTemplate>
     <DataTemplate x:Key="QueryTabContentTemplate">
-        <TextBox Text="{Binding Path=Text, UpdateSourceTrigger=PropertyChanged}"/>
-    </DataTemplate>
-
-    <DataTemplate x:Key="ResultTabItemTemplate">
-        <StackPanel Orientation="Horizontal">
-            <Image Source="{Binding Path=IconSource}" />
-            <TextBlock Text="{Binding Path=Title}" />
-        </StackPanel>
-    </DataTemplate>
-    
-    <DataTemplate DataType="{x:Type m:ResultsData}">
-        <DataGrid ItemsSource="{Binding Path=ResultsTable}"/>
-    </DataTemplate>
-
-    <DataTemplate DataType="{x:Type m:SchemaData}">
-        <ListView />
-    </DataTemplate>
-
-    <DataTemplate DataType="{x:Type m:MessagesData}">
-        <ListView ItemsSource="{Binding Path=MessagesList}"/>
+        <TextBox Text="{Binding Path=Query.Text, UpdateSourceTrigger=PropertyChanged}"/>
     </DataTemplate>
 </ResourceDictionary>
+    
+    

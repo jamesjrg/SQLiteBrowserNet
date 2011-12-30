@@ -5,6 +5,9 @@
         xmlns:view="clr-namespace:SQLiteBrowserNet.View"
         Title="{StaticResource AppTitle}" Height="350" Width="525">
     <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MainWindow.OpenDBCommand}"
+                    Executed="ExecutedOpenDBCommand"
+                    CanExecute="CanExecuteOpenDBCommand" />
         <CommandBinding Command="{x:Static local:MainWindow.ExecuteQueryCommand}"
                     Executed="ExecutedExecuteQueryCommand"
                     CanExecute="CanExecuteExecuteQueryCommand" />
@@ -13,9 +16,18 @@
                     CanExecute="CanExecuteNewQueryCommand" />
         <CommandBinding Command="{x:Static local:MainWindow.BrowseTableCommand}"
                     Executed="ExecutedBrowseTableCommand"
-                    CanExecute="CanExecuteBrowseTableCommand" />
+                    CanExecute="CanExecuteBrowseTableCommand" />        
     </Window.CommandBindings>
     <Window.InputBindings>
+        <KeyBinding Modifiers="Control"
+                    Key="o"
+                    Command="{x:Static local:MainWindow.OpenDBCommand}" />
+        <KeyBinding Modifiers="Control"
+                    Key="n"
+                    Command="{x:Static local:MainWindow.NewQueryCommand}" />
+        <KeyBinding Modifiers="Control"
+                    Key="t"
+                    Command="{x:Static local:MainWindow.NewQueryCommand}" />
         <KeyBinding Key="F5"
                     Command="{x:Static local:MainWindow.ExecuteQueryCommand}" />
     </Window.InputBindings>
@@ -23,7 +35,7 @@
         <Menu Height="23" HorizontalAlignment="Stretch" Name="menu1" VerticalAlignment="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="_New database" />
-                <MenuItem Header="_Open database" />
+                <MenuItem Header="_Open database" Command="{x:Static local:MainWindow.OpenDBCommand}"/>
                 <MenuItem Header="_Close database" />
                 <Separator />
                 <MenuItem Header="_Save database" />
@@ -60,7 +72,7 @@
                 <MenuItem Header="Execute" Command="{x:Static local:MainWindow.ExecuteQueryCommand}"/>
                 <MenuItem Header="Cancel Executing Query" />
                 <Separator />
-                <MenuItem Header="_New Query" />
+                <MenuItem Header="_New Query" Command="{x:Static local:MainWindow.NewQueryCommand}" />
                 <MenuItem Header="_Open Query" />
                 <MenuItem Header="_Close Query" />
                 <Separator />
@@ -78,7 +90,7 @@
         <ToolBarTray Name="toolBarTray1">
             <ToolBar Name="toolBar1" Height="30">
                 <Button><Image Source="Resources/NewDocumentHS.png" /></Button>
-                <Button><Image Source="Resources/openHS.png" /></Button>
+                <Button Command="{x:Static local:MainWindow.ExecuteQueryCommand}"><Image Source="Resources/openHS.png" /></Button>
             </ToolBar>
         </ToolBarTray>
         <Grid>

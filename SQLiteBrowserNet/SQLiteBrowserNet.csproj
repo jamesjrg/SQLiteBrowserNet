@@ -61,15 +61,13 @@
     </ApplicationDefinition>
     <Compile Include="Db\DbConn.cs" />
     <Compile Include="Model\Query.cs" />
-    <Compile Include="Model\Results.cs" />
-    <Compile Include="ViewModel\ResultsTabsVM.cs" />
     <Compile Include="View\QueryTabs.xaml.cs">
       <DependentUpon>QueryTabs.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ResultsTabs.xaml.cs">
       <DependentUpon>ResultsTabs.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\QueryTabsVM.cs" />
+    <Compile Include="ViewModel\MainWindowVM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

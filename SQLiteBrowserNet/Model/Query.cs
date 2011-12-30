@@ -14,7 +14,7 @@ namespace SQLiteBrowserNet.Model
 
         public Query()
         {
-            Filename = "anotherNewQuery";
+            Filename = "anotherQuery";
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Windows.Input;
 using SQLiteBrowserNet.Db;
 using System.Data;
 using SQLiteBrowserNet.ViewModel;
+using Microsoft.Win32;
 
 namespace SQLiteBrowserNet
 {
@@ -17,32 +18,30 @@ namespace SQLiteBrowserNet
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static RoutedCommand OpenDBCommand = new RoutedCommand();
         public static RoutedCommand ExecuteQueryCommand = new RoutedCommand();
         public static RoutedCommand BrowseTableCommand = new RoutedCommand();
         public static RoutedCommand NewQueryCommand = new RoutedCommand();
 
-        DbConn _conn = new DbConn();
-        QueryTabsVM _queryTabsVM = new QueryTabsVM();
-        ResultsTabsVM _resultsTabsVM = new ResultsTabsVM();
+        MainWindowVM _vm = new MainWindowVM();
         
         public MainWindow()
         {
             InitializeComponent();
-            queryTabs.DataContext = _queryTabsVM;
-            resultsTabs.DataContext = _resultsTabsVM;
+            this.DataContext = _vm;
+            queryTabs.DataContext = _vm.QueryItemsList;
+            resultsTabs.DataContext = _vm.QueryItemsList;
 
             OpenDB("../../../Japanese Kana.anki");
-            ExecutedBrowseTableCommand(null, null);
-            ExecutedBrowseTableCommand(null, null);
             ExecutedNewQueryCommand(null, null);
-            ExecutedNewQueryCommand(null, null);
+            ExecutedBrowseTableCommand(null, null);
         }
 
         private void OpenDB(string path)
         {
             try
             {
-                _conn.Connect(path);
+                _vm.OpenDB(path);
             }
             catch (Exception e)
             {
@@ -50,9 +49,27 @@ namespace SQLiteBrowserNet
             }
         }
 
+        #region commands
+
+        private void ExecutedOpenDBCommand(object sender, ExecutedRoutedEventArgs e)
+        {
+            OpenFileDialog d = new OpenFileDialog();
+            if (d.ShowDialog() == true)
+            {
+                //xxx
+            }
+        }
+
+        private void CanExecuteOpenDBCommand(object sender, CanExecuteRoutedEventArgs e)
+        {
+            //XXX
+            Control target = e.Source as Control;
+            e.CanExecute = true;
+        }
+
         private void ExecutedExecuteQueryCommand(object sender, ExecutedRoutedEventArgs e)
         {
-            _resultsTabsVM.NewResult(_conn, _queryTabsVM.GetCurrentText());
+            _vm.ExecuteCurrentQuery();
         }
 
         private void CanExecuteExecuteQueryCommand(object sender, CanExecuteRoutedEventArgs e)
@@ -64,7 +81,8 @@ namespace SQLiteBrowserNet
 
         private void ExecutedBrowseTableCommand(object sender, ExecutedRoutedEventArgs e)
         {
-            _resultsTabsVM.NewResult(_conn, "SELECT * FROM tags");
+            _vm.NewQuery("SELECT * FROM tags");
+            ExecutedExecuteQueryCommand(null, null);
         }
 
         private void CanExecuteBrowseTableCommand(object sender, CanExecuteRoutedEventArgs e)
@@ -76,7 +94,7 @@ namespace SQLiteBrowserNet
 
         private void ExecutedNewQueryCommand(object sender, ExecutedRoutedEventArgs e)
         {
-            _queryTabsVM.NewQuery();
+            _vm.NewQuery();
         }
 
         private void CanExecuteNewQueryCommand(object sender, CanExecuteRoutedEventArgs e)
@@ -85,5 +103,7 @@ namespace SQLiteBrowserNet
             Control target = e.Source as Control;
             e.CanExecute = true;
         }
+
+        #endregion commands
     }
 }

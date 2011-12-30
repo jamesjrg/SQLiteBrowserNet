@@ -7,11 +7,9 @@
     <UserControl.Resources>
         <ResourceDictionary Source="../XAMLResources.xaml" />
     </UserControl.Resources>
-    <Grid>
-        <TabControl Name="tabControl"
+    <TabControl Name="tabControl"
                     IsSynchronizedWithCurrentItem="True"
-                    ItemsSource="{Binding Path=Queries}"
+                    ItemsSource="{Binding}"
                     ItemTemplate="{StaticResource QueryTabItemTemplate}"
                     ContentTemplate="{StaticResource QueryTabContentTemplate}"/>
-    </Grid>
 </UserControl>

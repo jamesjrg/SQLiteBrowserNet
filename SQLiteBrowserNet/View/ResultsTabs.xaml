@@ -7,11 +7,29 @@
     <UserControl.Resources>
         <ResourceDictionary Source="../XAMLResources.xaml" />
     </UserControl.Resources>
-    <Grid>
-        <TabControl Name="tabControl"
-                    IsSynchronizedWithCurrentItem="True"
-                    ItemsSource="{Binding Path=Results}"
-                    ItemTemplate="{StaticResource ResultTabItemTemplate}"
-                    />
-    </Grid>
+    <TabControl Name="tabControl"
+                IsSynchronizedWithCurrentItem="True">
+        <TabItem>
+            <TabItem.HeaderTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="" />
+                        <TextBlock Text="Results" />
+                    </StackPanel>
+                </DataTemplate>
+            </TabItem.HeaderTemplate>
+            <DataGrid ItemsSource="{Binding Path=/Results}"/>
+        </TabItem>
+        <TabItem>
+            <TabItem.HeaderTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="" />
+                        <TextBlock Text="Messages" />
+                    </StackPanel>
+                </DataTemplate>
+            </TabItem.HeaderTemplate>
+            <ListView ItemsSource="{Binding Path=/Messages}"/>
+        </TabItem>
+    </TabControl>
 </UserControl>
