@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:SQLiteBrowserNet"
         xmlns:view="clr-namespace:SQLiteBrowserNet.View"
-        Title="{StaticResource AppTitle}" Height="350" Width="525">
+        Title="{StaticResource AppTitle}" Height="500" Width="600">
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static local:MainWindow.OpenDBCommand}"
                     Executed="ExecutedOpenDBCommand"
@@ -31,8 +31,8 @@
         <KeyBinding Key="F5"
                     Command="{x:Static local:MainWindow.ExecuteQueryCommand}" />
     </Window.InputBindings>
-    <StackPanel>
-        <Menu Height="23" HorizontalAlignment="Stretch" Name="menu1" VerticalAlignment="Top">
+    <DockPanel>
+        <Menu Height="23" HorizontalAlignment="Stretch" Name="menu1" DockPanel.Dock="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="_New database" />
                 <MenuItem Header="_Open database" Command="{x:Static local:MainWindow.OpenDBCommand}"/>
@@ -87,10 +87,12 @@
                 <MenuItem Header="_About" />
             </MenuItem>
         </Menu>
-        <ToolBarTray Name="toolBarTray1">
+        <ToolBarTray Name="toolBarTray1" DockPanel.Dock="Top">
             <ToolBar Name="toolBar1" Height="30">
                 <Button><Image Source="Resources/NewDocumentHS.png" /></Button>
-                <Button Command="{x:Static local:MainWindow.ExecuteQueryCommand}"><Image Source="Resources/openHS.png" /></Button>
+                <Button Command="{x:Static local:MainWindow.OpenDBCommand}">
+                    <Image Source="Resources/openHS.png" />
+                </Button>
             </ToolBar>
         </ToolBarTray>
         <Grid>
@@ -98,7 +100,7 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <view:ObjectExplorer />
+            <view:ObjectExplorer x:Name="objectExplorer"/>
             <GridSplitter Grid.Column="0" Width="5" />
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
@@ -111,5 +113,5 @@
                 <view:ResultsTabs x:Name="resultsTabs" Grid.Row="1"/>
             </Grid>
         </Grid>        
-    </StackPanel>
+    </DockPanel>
 </Window>

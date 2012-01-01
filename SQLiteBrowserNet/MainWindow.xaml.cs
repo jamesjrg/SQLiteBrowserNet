@@ -23,12 +23,18 @@ namespace SQLiteBrowserNet
         public static RoutedCommand BrowseTableCommand = new RoutedCommand();
         public static RoutedCommand NewQueryCommand = new RoutedCommand();
 
-        MainWindowVM _vm = new MainWindowVM();
+        MainWindowVM _vm;
+        DBTreeVM _treeVM;
         
         public MainWindow()
         {
+            DbConn conn = new DbConn();
+            _vm = new MainWindowVM(conn);
+            _treeVM = new DBTreeVM(conn);
+
             InitializeComponent();
             this.DataContext = _vm;
+            objectExplorer.DataContext = _treeVM;
             queryTabs.DataContext = _vm.QueryItemsList;
             resultsTabs.DataContext = _vm.QueryItemsList;
 
@@ -41,12 +47,14 @@ namespace SQLiteBrowserNet
         {
             try
             {
-                _vm.OpenDB(path);
+                _vm.OpenDB(path);                
             }
             catch (Exception e)
             {
                 MessageBoxResult result = MessageBox.Show(e.Message, "Failed to open database", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
+            _treeVM.BuildTree();
         }
 
         #region commands

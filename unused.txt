@@ -1,0 +1,14 @@
+<DataTemplate DataType="{x:Type m:ResultsData}">
+        <DataGrid ItemsSource="{Binding Path=ResultsTable}"/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type m:MessagesData}">
+        <ListView ItemsSource="{Binding Path=MessagesList}"/>
+    </DataTemplate>
+
+	<DataTemplate x:Key="ResultTabItemTemplate">
+        <StackPanel Orientation="Horizontal">
+            <Image Source="{Binding Path=IconSource}" />
+            <TextBlock Text="{Binding Path=Title}" />
+        </StackPanel>
+    </DataTemplate>

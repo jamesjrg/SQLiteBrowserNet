@@ -10,7 +10,7 @@ namespace SQLiteBrowserNet.Db
 {
     public class DbConn
     {
-        private SQLiteConnection conn;
+        private SQLiteConnection conn = new SQLiteConnection();
 
         public void Connect(string filename)
         {
@@ -48,6 +48,11 @@ namespace SQLiteBrowserNet.Db
         {
             SQLiteCommand cmd = new SQLiteCommand(query, conn);
             return cmd.ExecuteScalar();
+        }
+
+        public SQLiteConnection Conn
+        {
+            get { return conn; }
         }
     }
 }

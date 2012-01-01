@@ -1,11 +1,16 @@
 todo now:
+
+- make treeview lazy loading
+
 - hide resultstabs by default, until attached query is run
 
 - for editing tables, datagrid appears in a tab in queriestabs, not in results tabs.
 
 - messages tab should always appear at end of results tabs or not at all (probably by making the collectionview support sorting). should have actual sqlite messages. should always exist and never actually have its reference removed from resultstabs list, rather just gets filtered from view if it gets closed. should use try/catch to catch sql errors and display them. go to results tab after running query, unless there is an error, in which case hide the results tab and just show the messages tab.
 
-- make the basic treeview of database work - tables, indexes, right click to view schema or contents
+- make the basic treeview of database work - already got tables, now need indexes, etc.  treeview should inc everything from SQLiteConnection.GetSchema 
+
+- make schema treeview let you right click to view schema or contents ultimately these need icons and shortcut keys as well).
 
 - when a query tab is closed, its associated lower tabs also need to be killed
 
@@ -33,6 +38,7 @@ tests should test for (ob much of this is not yet implemented):
 - foreign keys
 
 stuff:
+- in tree view, icons for different sorts of children (e.g. tables, indexes, etc)
 - ctrl t / ctrl f4 open/close query tabs, also closing results/schema tabs
 - * in title bar if modified without saving, same with queries
 - grey out menu items and toolbar icons when not useable
@@ -42,6 +48,17 @@ stuff:
 - tooltips for toolbare and tree and long items in results
 - allow select/copy/export of result sets
 - exporting either data or result sets give options of ascii, utf, csv ascii, cvs utf8 etc
+- should be possible to optionally not lock database file - see SQlite explorer
+- allow import from csv, sql, others
+- allow export to sql, csv, xml, others
+- support transactions
+- support extensions
+- on-the-fly syntax checking
+- search and sort functionality, like sqlite browser
+- block commenting, indenting, etc
+- does the treeview's virtualization work? is it data virtualization?
+- refresh treeview after running query
+- highlight sql keywords
 - recent databases menu option
 - make browser work with tables named "group", and with tables named "8digit"
 - save/load queries
@@ -52,6 +69,9 @@ stuff:
 - results panes should be read only, but still selectable and copyable
 - messages in messages tab should maybe have icons?
 - result tab and messages tab should have icons
+- could look at feature lists at http://www.sqlite.org/cvstrac/wiki?p=ManagementTools for more ideas
+- execute highlighted text
+- execute multiple statements separeted by semi colon
 
 to run requires:
 .NET 4 client profile

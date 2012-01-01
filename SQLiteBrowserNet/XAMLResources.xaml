@@ -5,7 +5,10 @@
         <TextBlock Text="{Binding Path=Query.Filename}" />
     </DataTemplate>
     <DataTemplate x:Key="QueryTabContentTemplate">
-        <TextBox Text="{Binding Path=Query.Text, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Text="{Binding Path=Query.Text, UpdateSourceTrigger=PropertyChanged}"
+                 TextWrapping="Wrap"
+                 AcceptsReturn="True"
+                 VerticalScrollBarVisibility="Visible"/>
     </DataTemplate>
 </ResourceDictionary>
     
