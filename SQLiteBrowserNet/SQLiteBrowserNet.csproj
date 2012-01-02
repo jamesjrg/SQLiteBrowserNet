@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands.cs" />
     <Compile Include="Db\DbConn.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Model\Query.cs" />

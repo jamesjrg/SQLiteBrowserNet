@@ -13,9 +13,9 @@
         </StackPanel>
     </DataTemplate>
 
-	        protected override void OnStartup(StartupEventArgs e)
+	    private void CanExecuteNewQueryCommand(object sender, CanExecuteRoutedEventArgs e)
         {
-            base.OnStartup(e);
-            MainWindow window = new MainWindow();
-            window.Show();
+            //XXX
+            Control target = e.Source as Control;
+            e.CanExecute = true;
         }

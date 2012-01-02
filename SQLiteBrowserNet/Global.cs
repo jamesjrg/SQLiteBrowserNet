@@ -7,7 +7,7 @@ using System.Data.SQLite;
 
 namespace SQLiteBrowserNet
 {
-    class Global
+    static class Global
     {
         static private DbConn _conn = new DbConn();
         static public DbConn Conn

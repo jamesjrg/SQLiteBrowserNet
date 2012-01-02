@@ -5,46 +5,46 @@
         xmlns:view="clr-namespace:SQLiteBrowserNet.View"
         Title="{StaticResource AppTitle}" Height="500" Width="600">
     <Window.CommandBindings>
-        <CommandBinding Command="{x:Static local:MainWindow.OpenDBCommand}"
+        <CommandBinding Command="{x:Static local:Commands.OpenDBCommand}"
                     Executed="ExecutedOpenDBCommand"
                     CanExecute="CanExecuteOpenDBCommand" />
-        <CommandBinding Command="{x:Static local:MainWindow.ExecuteQueryCommand}"
+        <CommandBinding Command="{x:Static local:Commands.ExecuteQueryCommand}"
                     Executed="ExecutedExecuteQueryCommand"
                     CanExecute="CanExecuteExecuteQueryCommand" />
-        <CommandBinding Command="{x:Static local:MainWindow.NewQueryCommand}"
+        <CommandBinding Command="{x:Static local:Commands.NewQueryCommand}"
                     Executed="ExecutedNewQueryCommand"
                     CanExecute="CanExecuteNewQueryCommand" />
-        <CommandBinding Command="{x:Static local:MainWindow.CloseQueryCommand}"
+        <CommandBinding Command="{x:Static local:Commands.CloseQueryCommand}"
                     Executed="ExecutedCloseQueryCommand"
                     CanExecute="CanExecuteCloseQueryCommand" />
-        <CommandBinding Command="{x:Static local:MainWindow.BrowseTableCommand}"
+        <CommandBinding Command="{x:Static local:Commands.BrowseTableCommand}"
                     Executed="ExecutedBrowseTableCommand"
                     CanExecute="CanExecuteBrowseTableCommand" />        
     </Window.CommandBindings>
     <Window.InputBindings>
         <KeyBinding Modifiers="Control"
                     Key="o"
-                    Command="{x:Static local:MainWindow.OpenDBCommand}" />
+                    Command="{x:Static local:Commands.OpenDBCommand}" />
         <KeyBinding Modifiers="Control"
                     Key="n"
-                    Command="{x:Static local:MainWindow.NewQueryCommand}" />
+                    Command="{x:Static local:Commands.NewQueryCommand}" />
         <KeyBinding Modifiers="Control"
                     Key="t"
-                    Command="{x:Static local:MainWindow.NewQueryCommand}" />
+                    Command="{x:Static local:Commands.NewQueryCommand}" />
         <KeyBinding Modifiers="Control"
                     Key="w"
-                    Command="{x:Static local:MainWindow.CloseQueryCommand}" />
+                    Command="{x:Static local:Commands.CloseQueryCommand}" />
         <KeyBinding Modifiers="Control"
                     Key="F4"
-                    Command="{x:Static local:MainWindow.CloseQueryCommand}" />
+                    Command="{x:Static local:Commands.CloseQueryCommand}" />
         <KeyBinding Key="F5"
-                    Command="{x:Static local:MainWindow.ExecuteQueryCommand}" />
+                    Command="{x:Static local:Commands.ExecuteQueryCommand}" />
     </Window.InputBindings>
     <DockPanel>
         <Menu Height="23" HorizontalAlignment="Stretch" Name="menu1" DockPanel.Dock="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="_New database" />
-                <MenuItem Header="_Open database" Command="{x:Static local:MainWindow.OpenDBCommand}"/>
+                <MenuItem Header="_Open database" Command="{x:Static local:Commands.OpenDBCommand}"/>
                 <MenuItem Header="_Close database" />
                 <Separator />
                 <MenuItem Header="_Save database" />
@@ -78,14 +78,14 @@
                 <MenuItem Header="_Word wrap" />
             </MenuItem>
             <MenuItem Header="_Query">
-                <MenuItem Header="Execute" Command="{x:Static local:MainWindow.ExecuteQueryCommand}"/>
+                <MenuItem Header="Execute" Command="{x:Static local:Commands.ExecuteQueryCommand}"/>
                 <MenuItem Header="Cancel Executing Query" />
                 <Separator />
-                <MenuItem Header="_New Query" Command="{x:Static local:MainWindow.NewQueryCommand}" />
-                <MenuItem Header="_Open Query" Command="{x:Static local:MainWindow.OpenQueryCommand}"/>
-                <MenuItem Header="_Close Query" Command="{x:Static local:MainWindow.CloseQueryCommand}"/>
+                <MenuItem Header="_New Query" Command="{x:Static local:Commands.NewQueryCommand}" />
+                <MenuItem Header="_Open Query" Command="{x:Static local:Commands.OpenQueryCommand}"/>
+                <MenuItem Header="_Close Query" Command="{x:Static local:Commands.CloseQueryCommand}"/>
                 <Separator />
-                <MenuItem Header="_Save Query" Command="{x:Static local:MainWindow.SaveQueryCommand}"/>
+                <MenuItem Header="_Save Query" Command="{x:Static local:Commands.SaveQueryCommand}"/>
                 <MenuItem Header="_Save Query _As..." />                
             </MenuItem>
             <MenuItem Header="_Tools">
@@ -99,7 +99,7 @@
         <ToolBarTray Name="toolBarTray1" DockPanel.Dock="Top">
             <ToolBar Name="toolBar1" Height="30">
                 <Button><Image Source="Resources/NewDocumentHS.png" /></Button>
-                <Button Command="{x:Static local:MainWindow.OpenDBCommand}">
+                <Button Command="{x:Static local:Commands.OpenDBCommand}">
                     <Image Source="Resources/openHS.png" />
                 </Button>
             </ToolBar>

@@ -1,14 +1,10 @@
 git changelog:
-- make open new db files work, and treeview redraws
-- you can close query tabs
-- refactor db conn to have its own global static class (Global)
-- QueryAndResults now has its own vm, and is renamed (from QueryItems)
 
 todo now:
 
-- manually create mainwindow in app (see unused, and remove starturi, but then apptitle can't bind for some reason)
-
-- change from routedcommands to some other way of routing commands through system? and have definition not in mainwindow.xaml.cs?
+- what exactly does  public event EventHandler RequestClose; do? and:
+if (handler != null) handler(this, EventArgs.Empty);
+				?
 
 - make close command, save command and execute command routed on the queryitems, not the main window
 
@@ -18,15 +14,15 @@ todo now:
 
 - hide resultstabs by default, until attached query is run
 
+- if query fails, hide results tab, just show messages tab
+
 - for editing tables, datagrid appears in a tab in queriestabs, not in results tabs.
 
-- messages tab should always appear at end of results tabs or not at all (probably by making the collectionview support sorting). should have actual sqlite messages. should always exist and never actually have its reference removed from resultstabs list, rather just gets filtered from view if it gets closed. should use try/catch to catch sql errors and display them. go to results tab after running query, unless there is an error, in which case hide the results tab and just show the messages tab.
+- if a query window runs multiple query statements, I guess it should open several different results tabs all sharing a single messages tab. messages tab should always appear at end of results tabs or not at all (probably by making the collectionview support sorting).
 
 - make the basic treeview of database work - already got tables, now need indexes, etc.  treeview should inc everything from SQLiteConnection.GetSchema 
 
 - make schema treeview let you right click to view schema or contents ultimately these need icons and shortcut keys as well).
-
-- when a query tab is closed, its associated lower tabs also need to be killed
 
 - add some unit tests, and perhaps start doing write test first programming
 
@@ -58,6 +54,7 @@ stuff:
 - grey out menu items and toolbar icons when not useable
 - have shortcut key listed next to each menu item
 - make shortcut keys work
+- prompt if closing unsaved query? or maybe not...or an option...
 - should be able to execute (or otherwise sensibly error) balnk queries, malformed queries, etc
 - tooltips for toolbare and tree and long items in results
 - allow select/copy/export of result sets

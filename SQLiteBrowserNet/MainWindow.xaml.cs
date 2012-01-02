@@ -18,14 +18,6 @@ namespace SQLiteBrowserNet
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static RoutedCommand OpenDBCommand = new RoutedCommand();
-        public static RoutedCommand ExecuteQueryCommand = new RoutedCommand();
-        public static RoutedCommand BrowseTableCommand = new RoutedCommand();
-        public static RoutedCommand NewQueryCommand = new RoutedCommand();
-        public static RoutedCommand OpenQueryCommand = new RoutedCommand();
-        public static RoutedCommand SaveQueryCommand = new RoutedCommand();
-        public static RoutedCommand CloseQueryCommand = new RoutedCommand();
-
         MainWindowVM _vm;
         DbTreeVM _treeVM;
         
@@ -108,7 +100,6 @@ namespace SQLiteBrowserNet
         private void CanExecuteNewQueryCommand(object sender, CanExecuteRoutedEventArgs e)
         {
             //XXX
-            Control target = e.Source as Control;
             e.CanExecute = true;
         }
 

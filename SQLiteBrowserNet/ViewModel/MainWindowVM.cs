@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Windows.Data;
 using System.Data;
 using SQLiteBrowserNet.Db;
+using System.Windows.Input;
 
 namespace SQLiteBrowserNet.ViewModel
 {
@@ -59,6 +60,6 @@ namespace SQLiteBrowserNet.ViewModel
             CurrentItems().ExecuteQuery();
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(_queryItemsList);
             collectionView.Refresh();
-        }        
+        }
     }
 }
