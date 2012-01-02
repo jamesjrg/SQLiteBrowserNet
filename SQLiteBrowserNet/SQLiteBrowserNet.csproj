@@ -60,9 +60,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Db\DbConn.cs" />
+    <Compile Include="Global.cs" />
     <Compile Include="Model\Query.cs" />
     <Compile Include="Model\TreeNode.cs" />
-    <Compile Include="ViewModel\DBTreeVM.cs" />
+    <Compile Include="ViewModel\DbTreeVM.cs" />
+    <Compile Include="ViewModel\QueryAndResultsVM.cs" />
     <Compile Include="ViewModel\TreeNodeVM.cs" />
     <Compile Include="View\QueryTabs.xaml.cs">
       <DependentUpon>QueryTabs.xaml</DependentUpon>

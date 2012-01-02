@@ -11,44 +11,35 @@ using SQLiteBrowserNet.Db;
 
 namespace SQLiteBrowserNet.ViewModel
 {
-    class QueryItems
-    {
-        public QueryItems()
-        {
-            Query = new Query();
-            Messages = new ObservableCollection<String>();
-        }
-
-        public Query Query { get;set; }
-        public DataTable Results { get; set; }
-        public ObservableCollection<String> Messages { get;set; }
-    }
-
     class MainWindowVM
     {
-        DbConn _conn;
-        ObservableCollection<QueryItems> _queryItemsList = new ObservableCollection<QueryItems>();
+        ObservableCollection<QueryAndResultsVM> _queryItemsList = new ObservableCollection<QueryAndResultsVM>();
 
-        public MainWindowVM(DbConn conn)
+        public MainWindowVM()
         {
-            _conn = conn;
             //XXX for closing tabs
             //_queries.CollectionChanged += this.OnWorkspacesChanged;
         }
 
         public void OpenDB(string path)
         {
-            _conn.Connect(path);
+            Global.Conn.Connect(path);
         }
 
-        public ObservableCollection<QueryItems> QueryItemsList
+        public ObservableCollection<QueryAndResultsVM> QueryItemsList
         {
             get { return _queryItemsList; }
         }
 
+        public QueryAndResultsVM CurrentItems()
+        {
+            ICollectionView collectionView = CollectionViewSource.GetDefaultView(_queryItemsList);
+            return (QueryAndResultsVM)collectionView.CurrentItem;
+        }
+
         public void NewQuery(string query="")
         {
-            var items = new QueryItems();
+            var items = new QueryAndResultsVM();
             items.Query.Text = query;
             _queryItemsList.Add(items);
 
@@ -56,27 +47,18 @@ namespace SQLiteBrowserNet.ViewModel
             collectionView.MoveCurrentTo(items);
         }
 
-        public QueryItems CurrentItems()
+        public void CloseQuery()
         {
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(_queryItemsList);
-            return (QueryItems)collectionView.CurrentItem;
+            QueryAndResultsVM curr = (QueryAndResultsVM)collectionView.CurrentItem;
+            _queryItemsList.Remove(curr);
         }
 
         public void ExecuteCurrentQuery()
         {
-            var query = CurrentItems().Query.Text;
-            var currentItems = CurrentItems();
-
-            try
-            {
-                currentItems.Results = _conn.ExecuteQuery(query);
-                ICollectionView collectionView = CollectionViewSource.GetDefaultView(_queryItemsList);
-                collectionView.Refresh();
-            }
-            catch (Exception e)
-            {
-                currentItems.Messages.Add(e.Message);
-            }
-        }
+            CurrentItems().ExecuteQuery();
+            ICollectionView collectionView = CollectionViewSource.GetDefaultView(_queryItemsList);
+            collectionView.Refresh();
+        }        
     }
 }

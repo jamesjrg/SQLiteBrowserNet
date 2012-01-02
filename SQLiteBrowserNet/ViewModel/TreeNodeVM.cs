@@ -9,7 +9,7 @@ namespace SQLiteBrowserNet.ViewModel
 {
     class TreeNodeVM
     {
-        readonly ReadOnlyCollection<TreeNodeVM> _children;
+        readonly ObservableCollection<TreeNodeVM> _children;
         readonly TreeNodeVM _parent;
         readonly TreeNode _node;
 
@@ -23,13 +23,13 @@ namespace SQLiteBrowserNet.ViewModel
             _node = node;
             _parent = parent;
 
-            _children = new ReadOnlyCollection<TreeNodeVM>(
+            _children = new ObservableCollection<TreeNodeVM>(
                 (from child in _node.Children
                  select new TreeNodeVM(child, this))
                  .ToList<TreeNodeVM>());
         }
 
-        public ReadOnlyCollection<TreeNodeVM> Children
+        public ObservableCollection<TreeNodeVM> Children
         {
             get { return _children; }
         }

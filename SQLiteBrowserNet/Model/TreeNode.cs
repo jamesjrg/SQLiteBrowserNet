@@ -18,27 +18,27 @@ namespace SQLiteBrowserNet.Model
 
     class RootNode : TreeNode
     {
-        public RootNode(DbConn conn)
+        public RootNode()
         {
-            if (conn.Conn.State == ConnectionState.Closed)
+            if (Global.RealConn.State == ConnectionState.Closed)
             {
                 Name = "No database";
             }
             else
             {
-                Name = conn.Conn.DataSource;
+                Name = Global.RealConn.DataSource;
 
-                DataTable tables = conn.Conn.GetSchema("Tables");
+                DataTable tables = Global.RealConn.GetSchema("Tables");
                 
                 foreach (DataRow row in tables.Rows)
-                    _children.Add(new TableNode(row.ItemArray, conn));
+                    _children.Add(new TableNode(row.ItemArray));
             }
         }
     }
 
     class TableNode : TreeNode
     {
-        public TableNode(object[] row, DbConn conn)
+        public TableNode(object[] row)
         {
             if (row.Length > 2)
                 Name = row[2].ToString();
@@ -49,7 +49,7 @@ namespace SQLiteBrowserNet.Model
 
     class TestNode : TreeNode
     {
-        public TestNode(string name, DbConn conn)
+        public TestNode(string name)
         {
             Name = name;
         }

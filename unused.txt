@@ -12,3 +12,10 @@
             <TextBlock Text="{Binding Path=Title}" />
         </StackPanel>
     </DataTemplate>
+
+	        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            MainWindow window = new MainWindow();
+            window.Show();
+        }

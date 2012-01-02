@@ -14,6 +14,7 @@ namespace SQLiteBrowserNet.Db
 
         public void Connect(string filename)
         {
+            Close();
             conn = new SQLiteConnection("Data Source=" + filename + ";");
             conn.Open();
         }
@@ -50,7 +51,7 @@ namespace SQLiteBrowserNet.Db
             return cmd.ExecuteScalar();
         }
 
-        public SQLiteConnection Conn
+        public SQLiteConnection RealConn
         {
             get { return conn; }
         }

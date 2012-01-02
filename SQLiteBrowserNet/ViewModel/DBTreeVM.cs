@@ -4,35 +4,31 @@ using System.Collections.ObjectModel;
 using SQLiteBrowserNet.Db;
 using System.Data;
 using SQLiteBrowserNet.Model;
+using System.ComponentModel;
+using System.Windows.Data;
 
 namespace SQLiteBrowserNet.ViewModel
 {
-    class DBTreeVM
+    class DbTreeVM
     {
-        DbConn _conn;
         TreeNodeVM _rootObject;
-        ReadOnlyCollection<TreeNodeVM> _firstGeneration;
+        ObservableCollection<TreeNodeVM> _firstGeneration = new ObservableCollection<TreeNodeVM>();
 
-        public DBTreeVM(DbConn conn)
+        public DbTreeVM()
         {
-            _conn = conn;
-
-            BuildTree();            
+            BuildTree();       
         }
 
-        public ReadOnlyCollection<TreeNodeVM> FirstGeneration
+        public ObservableCollection<TreeNodeVM> FirstGeneration
         {
             get { return _firstGeneration; }
         }
 
         public void BuildTree()
         {
-            _rootObject = new TreeNodeVM(new RootNode(_conn));
-            _firstGeneration = new ReadOnlyCollection<TreeNodeVM>(
-                new TreeNodeVM[]
-                { 
-                    _rootObject
-                });
+            _rootObject = new TreeNodeVM(new RootNode());
+            _firstGeneration.Clear();
+            _firstGeneration.Add(_rootObject);
         }
     }
 }

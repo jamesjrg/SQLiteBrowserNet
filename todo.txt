@@ -1,4 +1,18 @@
+git changelog:
+- make open new db files work, and treeview redraws
+- you can close query tabs
+- refactor db conn to have its own global static class (Global)
+- QueryAndResults now has its own vm, and is renamed (from QueryItems)
+
 todo now:
+
+- manually create mainwindow in app (see unused, and remove starturi, but then apptitle can't bind for some reason)
+
+- change from routedcommands to some other way of routing commands through system? and have definition not in mainwindow.xaml.cs?
+
+- make close command, save command and execute command routed on the queryitems, not the main window
+
+- close tab icons on queries, and hover effects etc
 
 - make treeview lazy loading
 

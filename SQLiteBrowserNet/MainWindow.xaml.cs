@@ -22,15 +22,17 @@ namespace SQLiteBrowserNet
         public static RoutedCommand ExecuteQueryCommand = new RoutedCommand();
         public static RoutedCommand BrowseTableCommand = new RoutedCommand();
         public static RoutedCommand NewQueryCommand = new RoutedCommand();
+        public static RoutedCommand OpenQueryCommand = new RoutedCommand();
+        public static RoutedCommand SaveQueryCommand = new RoutedCommand();
+        public static RoutedCommand CloseQueryCommand = new RoutedCommand();
 
         MainWindowVM _vm;
-        DBTreeVM _treeVM;
+        DbTreeVM _treeVM;
         
         public MainWindow()
         {
-            DbConn conn = new DbConn();
-            _vm = new MainWindowVM(conn);
-            _treeVM = new DBTreeVM(conn);
+            _vm = new MainWindowVM();
+            _treeVM = new DbTreeVM();
 
             InitializeComponent();
             this.DataContext = _vm;
@@ -63,9 +65,7 @@ namespace SQLiteBrowserNet
         {
             OpenFileDialog d = new OpenFileDialog();
             if (d.ShowDialog() == true)
-            {
-                //xxx
-            }
+                OpenDB(d.FileName);
         }
 
         private void CanExecuteOpenDBCommand(object sender, CanExecuteRoutedEventArgs e)
@@ -90,7 +90,7 @@ namespace SQLiteBrowserNet
         private void ExecutedBrowseTableCommand(object sender, ExecutedRoutedEventArgs e)
         {
             _vm.NewQuery("SELECT * FROM tags");
-            ExecutedExecuteQueryCommand(null, null);
+            _vm.ExecuteCurrentQuery();
         }
 
         private void CanExecuteBrowseTableCommand(object sender, CanExecuteRoutedEventArgs e)
@@ -106,6 +106,18 @@ namespace SQLiteBrowserNet
         }
 
         private void CanExecuteNewQueryCommand(object sender, CanExecuteRoutedEventArgs e)
+        {
+            //XXX
+            Control target = e.Source as Control;
+            e.CanExecute = true;
+        }
+
+        private void ExecutedCloseQueryCommand(object sender, ExecutedRoutedEventArgs e)
+        {
+            _vm.CloseQuery();
+        }
+
+        private void CanExecuteCloseQueryCommand(object sender, CanExecuteRoutedEventArgs e)
         {
             //XXX
             Control target = e.Source as Control;
