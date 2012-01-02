@@ -13,7 +13,7 @@
                         <TextBlock Text="{Binding Name}" />
                     </Grid>
                 </HierarchicalDataTemplate>
-            </TreeView.ItemTemplate>
+            </TreeView.ItemTemplate>            
         </TreeView>
     </DockPanel>
 </UserControl>

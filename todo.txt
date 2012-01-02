@@ -2,14 +2,15 @@ git changelog:
 
 todo now:
 
-- what exactly does  public event EventHandler RequestClose; do? and:
+- make close command, save command and execute command routed on the queryitems, not the main window. first need to understand events properly. what exactly does  public event EventHandler RequestClose; do? and:
 if (handler != null) handler(this, EventArgs.Empty);
 				?
 
-- make close command, save command and execute command routed on the queryitems, not the main window
-
 - close tab icons on queries, and hover effects etc
 
+- treeview should have a per-item context menu using ItemContainerStyle and triggers, or ItemContainerStyleSelector
+
+- looking at http://www.wpftutorial.net/ContextMenu.html, seems it should be possible for a menu command to simply specify the command, then automatically show the correct header and shortcut key?
 - make treeview lazy loading
 
 - hide resultstabs by default, until attached query is run
@@ -30,8 +31,9 @@ Plan:
 - a bit of a cross between sqlitebrowser and SQL Sever Management Studio, including features from both (where applicable)
 
 UI:
-- two bars at top, one is always constant (file, view, help, etc), the other is context sensitive depending on whether focus in object explorer, query window, or results window
-- context sensitive things for query: open, save, run, cancel. for results: export, select all, copy, copy with headers. for obj explorer win: view top 200, view all, edit top 200
+- two bars at top, one is always constant (file, view, help, etc), the other is context sensitive depending on whether focus in object explorer, query window, or results window. Or maybe don't make it context sensitive? Could e.g. have two tollbars, one always aligned with left top of left hand control (tree) for db actions, one at left top of querytabs control for query and results actions
+
+- commands query: open, save, run, cancel. for results: export, select all, copy, copy with headers. for obj explorer win: view top 200, view all, edit top 200
 - have undo/redo for query windows
 - rest v similar to msssms - object explorer on left, tabbed query windows windows on top, tabbed results panes and messages panes on bottom. rather than having properties windows from object epxlorer open in new windows, make them open tabs in bottom section as well. also, no properties window on right.
 - ideally the various sections are hidable/dockable/resizable/etc
@@ -48,6 +50,7 @@ tests should test for (ob much of this is not yet implemented):
 - foreign keys
 
 stuff:
+- right click context menu for queries and results
 - in tree view, icons for different sorts of children (e.g. tables, indexes, etc)
 - ctrl t / ctrl f4 open/close query tabs, also closing results/schema tabs
 - * in title bar if modified without saving, same with queries

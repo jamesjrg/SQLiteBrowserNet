@@ -11,10 +11,13 @@ namespace SQLiteBrowserNet.Model
         public string FilePath { get; set; }
         public string Text { get; set; }
         public bool IsModified { get; set; }
+        
+        static int newQueryCounter = 1;
 
         public Query()
         {
-            Filename = "anotherQuery";
+            Filename = "newQuery" + newQueryCounter;
+            newQueryCounter++;
         }
     }
 }

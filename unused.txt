@@ -19,3 +19,10 @@
             Control target = e.Source as Control;
             e.CanExecute = true;
         }
+
+		<TreeView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="contextual command">
+                    </MenuItem>
+                </ContextMenu>
+            </TreeView.ContextMenu>

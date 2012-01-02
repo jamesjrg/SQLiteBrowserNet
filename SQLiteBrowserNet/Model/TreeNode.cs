@@ -38,10 +38,12 @@ namespace SQLiteBrowserNet.Model
 
     class TableNode : TreeNode
     {
+        const int TABLE_NAME_IDX = 2;
+        
         public TableNode(object[] row)
         {
-            if (row.Length > 2)
-                Name = row[2].ToString();
+            if (row.Length > TABLE_NAME_IDX)
+                Name = row[TABLE_NAME_IDX].ToString();
             else
                 Name = "error";
         }

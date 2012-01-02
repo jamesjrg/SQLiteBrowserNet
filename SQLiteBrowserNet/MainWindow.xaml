@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:SQLiteBrowserNet"
         xmlns:view="clr-namespace:SQLiteBrowserNet.View"
-        Title="{StaticResource AppTitle}" Height="500" Width="600">
+        Title="{StaticResource AppTitle}" Height="500" Width="700">
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static local:Commands.OpenDBCommand}"
                     Executed="ExecutedOpenDBCommand"
@@ -86,7 +86,7 @@
                 <MenuItem Header="_Close Query" Command="{x:Static local:Commands.CloseQueryCommand}"/>
                 <Separator />
                 <MenuItem Header="_Save Query" Command="{x:Static local:Commands.SaveQueryCommand}"/>
-                <MenuItem Header="_Save Query _As..." />                
+                <MenuItem Header="Save Query _As..." />                
             </MenuItem>
             <MenuItem Header="_Tools">
                 <MenuItem Header="_Compact database" />
@@ -106,10 +106,10 @@
         </ToolBarTray>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
+                <ColumnDefinition Width="200"/>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <view:ObjectExplorer x:Name="objectExplorer"/>
+            <view:ObjectExplorer x:Name="objectExplorer" />
             <GridSplitter Grid.Column="0" Width="5" />
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>

@@ -7,12 +7,12 @@ namespace SQLiteBrowserNet
 {
     static class Commands
     {
-        public static RoutedCommand OpenDBCommand = new RoutedCommand();
-        public static RoutedCommand ExecuteQueryCommand = new RoutedCommand();
-        public static RoutedCommand BrowseTableCommand = new RoutedCommand();
-        public static RoutedCommand NewQueryCommand = new RoutedCommand();
-        public static RoutedCommand OpenQueryCommand = new RoutedCommand();
-        public static RoutedCommand SaveQueryCommand = new RoutedCommand();
-        public static RoutedCommand CloseQueryCommand = new RoutedCommand();
+        public static readonly RoutedCommand OpenDBCommand = new RoutedCommand();
+        public static readonly RoutedCommand ExecuteQueryCommand = new RoutedCommand();
+        public static readonly RoutedCommand BrowseTableCommand = new RoutedCommand();
+        public static readonly RoutedCommand NewQueryCommand = new RoutedCommand();
+        public static readonly RoutedCommand OpenQueryCommand = new RoutedCommand();
+        public static readonly RoutedCommand SaveQueryCommand = new RoutedCommand();
+        public static readonly RoutedCommand CloseQueryCommand = new RoutedCommand();
     }
 }
