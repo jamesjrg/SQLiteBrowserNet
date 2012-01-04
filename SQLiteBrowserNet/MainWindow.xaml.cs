@@ -29,8 +29,8 @@ namespace SQLiteBrowserNet
             InitializeComponent();
             this.DataContext = _vm;
             objectExplorer.DataContext = _treeVM;
-            queryTabs.DataContext = _vm.QueryItemsList;
-            resultsTabs.DataContext = _vm.QueryItemsList;
+            queryTabs.DataContext = _vm.QueryItems;
+            resultsTabs.DataContext = _vm.QueryItems;
 
             OpenDB("../../../Japanese Kana.anki");
             ExecutedNewQueryCommand(null, null);

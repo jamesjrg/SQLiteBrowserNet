@@ -2,15 +2,12 @@ git changelog:
 
 todo now:
 
-- make close command, save command and execute command routed on the queryitems, not the main window. first need to understand events properly. what exactly does  public event EventHandler RequestClose; do? and:
-if (handler != null) handler(this, EventArgs.Empty);
-				?
+- read C# book chap on events and WPF book chap on events + commands
 
 - close tab icons on queries, and hover effects etc
 
 - treeview should have a per-item context menu using ItemContainerStyle and triggers, or ItemContainerStyleSelector
 
-- looking at http://www.wpftutorial.net/ContextMenu.html, seems it should be possible for a menu command to simply specify the command, then automatically show the correct header and shortcut key?
 - make treeview lazy loading
 
 - hide resultstabs by default, until attached query is run
@@ -50,6 +47,7 @@ tests should test for (ob much of this is not yet implemented):
 - foreign keys
 
 stuff:
+- pompt for save db and/or query on exit
 - right click context menu for queries and results
 - in tree view, icons for different sorts of children (e.g. tables, indexes, etc)
 - ctrl t / ctrl f4 open/close query tabs, also closing results/schema tabs

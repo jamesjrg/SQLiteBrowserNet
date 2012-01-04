@@ -21,30 +21,11 @@
                     Executed="ExecutedBrowseTableCommand"
                     CanExecute="CanExecuteBrowseTableCommand" />        
     </Window.CommandBindings>
-    <Window.InputBindings>
-        <KeyBinding Modifiers="Control"
-                    Key="o"
-                    Command="{x:Static local:Commands.OpenDBCommand}" />
-        <KeyBinding Modifiers="Control"
-                    Key="n"
-                    Command="{x:Static local:Commands.NewQueryCommand}" />
-        <KeyBinding Modifiers="Control"
-                    Key="t"
-                    Command="{x:Static local:Commands.NewQueryCommand}" />
-        <KeyBinding Modifiers="Control"
-                    Key="w"
-                    Command="{x:Static local:Commands.CloseQueryCommand}" />
-        <KeyBinding Modifiers="Control"
-                    Key="F4"
-                    Command="{x:Static local:Commands.CloseQueryCommand}" />
-        <KeyBinding Key="F5"
-                    Command="{x:Static local:Commands.ExecuteQueryCommand}" />
-    </Window.InputBindings>
     <DockPanel>
         <Menu Height="23" HorizontalAlignment="Stretch" Name="menu1" DockPanel.Dock="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="_New database" />
-                <MenuItem Header="_Open database" Command="{x:Static local:Commands.OpenDBCommand}"/>
+                <MenuItem Command="{x:Static local:Commands.OpenDBCommand}"/>
                 <MenuItem Header="_Close database" />
                 <Separator />
                 <MenuItem Header="_Save database" />
@@ -52,15 +33,15 @@
                 <MenuItem Header="Revert database" />
                 <Separator />
                 <MenuItem Header="Recent _Files" />
-                <MenuItem Header="E_xit"  Command="{Binding Path=CloseCommand}" />
+                <MenuItem Header="E_xit"  Command="ApplicationCommands.Close" />
             </MenuItem>
             <MenuItem Header="_Edit">
-                <MenuItem Header="Undo" />
-                <MenuItem Header="Redo" />
+                <MenuItem Command="ApplicationCommands.Undo" />
+                <MenuItem Command="ApplicationCommands.Redo" />
                 <Separator />
-                <MenuItem Header="Cut" />
-                <MenuItem Header="Copy" />
-                <MenuItem Header="Paste" />
+                <MenuItem Command="ApplicationCommands.Cut" />
+                <MenuItem Command="ApplicationCommands.Copy" />
+                <MenuItem Command="ApplicationCommands.Paste" />
                 <Separator />
                 <MenuItem Header="Select _All" />
                 <Separator />
@@ -78,14 +59,14 @@
                 <MenuItem Header="_Word wrap" />
             </MenuItem>
             <MenuItem Header="_Query">
-                <MenuItem Header="Execute" Command="{x:Static local:Commands.ExecuteQueryCommand}"/>
+                <MenuItem Command="{x:Static local:Commands.ExecuteQueryCommand}"/>
                 <MenuItem Header="Cancel Executing Query" />
                 <Separator />
-                <MenuItem Header="_New Query" Command="{x:Static local:Commands.NewQueryCommand}" />
-                <MenuItem Header="_Open Query" Command="{x:Static local:Commands.OpenQueryCommand}"/>
-                <MenuItem Header="_Close Query" Command="{x:Static local:Commands.CloseQueryCommand}"/>
+                <MenuItem Command="{x:Static local:Commands.NewQueryCommand}" />
+                <MenuItem Command="{x:Static local:Commands.OpenQueryCommand}"/>
+                <MenuItem Command="{x:Static local:Commands.CloseQueryCommand}"/>
                 <Separator />
-                <MenuItem Header="_Save Query" Command="{x:Static local:Commands.SaveQueryCommand}"/>
+                <MenuItem Command="{x:Static local:Commands.SaveQueryCommand}"/>
                 <MenuItem Header="Save Query _As..." />                
             </MenuItem>
             <MenuItem Header="_Tools">
