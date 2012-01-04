@@ -18,6 +18,8 @@ namespace SQLiteBrowserNet.ViewModel
         public DataTable Results { get; set; }
         public ObservableCollection<String> Messages { get; set; }
 
+        RelayCommand _closeCommand;
+
         public QueryAndResultsVM()
         {
             Query = new Query();
@@ -35,6 +37,17 @@ namespace SQLiteBrowserNet.ViewModel
             catch (Exception e)
             {
                 Messages.Add(e.Message);
+            }
+        }
+
+        public ICommand CloseCommand
+        {
+            get
+            {
+                if (_closeCommand == null)
+                    _closeCommand = new RelayCommand(param => this.OnRequestClose());
+
+                return _closeCommand;
             }
         }
 

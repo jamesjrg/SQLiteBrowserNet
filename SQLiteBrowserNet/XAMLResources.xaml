@@ -1,15 +1,32 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:m="clr-namespace:SQLiteBrowserNet.Model">
+    
     <DataTemplate x:Key="QueryTabItemTemplate">
-        <TextBlock Text="{Binding Path=Query.Filename}" />
+        <DockPanel Width="120">
+            <Button 
+            Command="{Binding Path=CloseCommand}"
+            Content="X"
+            DockPanel.Dock="Right"
+            Focusable="False"
+            FontSize="9"
+            FontWeight="Bold"  
+            Margin="0,1,0,0"
+            Padding="0"
+            VerticalContentAlignment="Bottom"
+            Width="16" Height="16" 
+            />
+            <TextBlock Text="{Binding Path=Query.Filename}" />
+        </DockPanel>
     </DataTemplate>
+    
     <DataTemplate x:Key="QueryTabContentTemplate">
         <TextBox Text="{Binding Path=Query.Text, UpdateSourceTrigger=PropertyChanged}"
                  TextWrapping="Wrap"
                  AcceptsReturn="True"
                  VerticalScrollBarVisibility="Visible"/>
     </DataTemplate>
+    
 </ResourceDictionary>
     
     

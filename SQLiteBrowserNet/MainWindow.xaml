@@ -6,20 +6,18 @@
         Title="{StaticResource AppTitle}" Height="500" Width="700">
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static local:Commands.OpenDBCommand}"
-                    Executed="ExecutedOpenDBCommand"
-                    CanExecute="CanExecuteOpenDBCommand" />
+                    Executed="ExecutedOpenDBCommand" />
         <CommandBinding Command="{x:Static local:Commands.ExecuteQueryCommand}"
                     Executed="ExecutedExecuteQueryCommand"
                     CanExecute="CanExecuteExecuteQueryCommand" />
         <CommandBinding Command="{x:Static local:Commands.NewQueryCommand}"
-                    Executed="ExecutedNewQueryCommand"
-                    CanExecute="CanExecuteNewQueryCommand" />
+                    Executed="ExecutedNewQueryCommand" />
         <CommandBinding Command="{x:Static local:Commands.CloseQueryCommand}"
-                    Executed="ExecutedCloseQueryCommand"
-                    CanExecute="CanExecuteCloseQueryCommand" />
+                    Executed="ExecutedCloseQueryCommand" />
         <CommandBinding Command="{x:Static local:Commands.BrowseTableCommand}"
-                    Executed="ExecutedBrowseTableCommand"
-                    CanExecute="CanExecuteBrowseTableCommand" />        
+                    Executed="ExecutedBrowseTableCommand" />
+        <CommandBinding Command="{x:Static local:Commands.ExitCommand}"
+                    Executed="ExecutedExitCommand" />
     </Window.CommandBindings>
     <DockPanel>
         <Menu Height="23" HorizontalAlignment="Stretch" Name="menu1" DockPanel.Dock="Top">
@@ -33,7 +31,7 @@
                 <MenuItem Header="Revert database" />
                 <Separator />
                 <MenuItem Header="Recent _Files" />
-                <MenuItem Header="E_xit"  Command="ApplicationCommands.Close" />
+                <MenuItem Command="{x:Static local:Commands.ExitCommand}" />
             </MenuItem>
             <MenuItem Header="_Edit">
                 <MenuItem Command="ApplicationCommands.Undo" />

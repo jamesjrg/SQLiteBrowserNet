@@ -2,9 +2,7 @@ git changelog:
 
 todo now:
 
-- read C# book chap on events and WPF book chap on events + commands
-
-- close tab icons on queries, and hover effects etc
+- read C# book chap on events, and WPF book chap on events + commands, and WPF chap 14 on templates and styles
 
 - treeview should have a per-item context menu using ItemContainerStyle and triggers, or ItemContainerStyleSelector
 
@@ -55,6 +53,7 @@ stuff:
 - grey out menu items and toolbar icons when not useable
 - have shortcut key listed next to each menu item
 - make shortcut keys work
+- make close tab crosses a bit more pretty (ideally a bit like vs 2010) -> though doing this via constant recompile-test cycle is too time consuming, would need to go get a copy of MS WPF design program or similar
 - prompt if closing unsaved query? or maybe not...or an option...
 - should be able to execute (or otherwise sensibly error) balnk queries, malformed queries, etc
 - tooltips for toolbare and tree and long items in results

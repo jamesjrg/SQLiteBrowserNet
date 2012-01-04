@@ -60,13 +60,6 @@ namespace SQLiteBrowserNet
                 OpenDB(d.FileName);
         }
 
-        private void CanExecuteOpenDBCommand(object sender, CanExecuteRoutedEventArgs e)
-        {
-            //XXX
-            Control target = e.Source as Control;
-            e.CanExecute = true;
-        }
-
         private void ExecutedExecuteQueryCommand(object sender, ExecutedRoutedEventArgs e)
         {
             _vm.ExecuteCurrentQuery();
@@ -85,22 +78,9 @@ namespace SQLiteBrowserNet
             _vm.ExecuteCurrentQuery();
         }
 
-        private void CanExecuteBrowseTableCommand(object sender, CanExecuteRoutedEventArgs e)
-        {
-            //XXX
-            Control target = e.Source as Control;
-            e.CanExecute = true;
-        }
-
         private void ExecutedNewQueryCommand(object sender, ExecutedRoutedEventArgs e)
         {
             _vm.NewQuery();
-        }
-
-        private void CanExecuteNewQueryCommand(object sender, CanExecuteRoutedEventArgs e)
-        {
-            //XXX
-            e.CanExecute = true;
         }
 
         private void ExecutedCloseQueryCommand(object sender, ExecutedRoutedEventArgs e)
@@ -108,11 +88,9 @@ namespace SQLiteBrowserNet
             _vm.CloseQuery();
         }
 
-        private void CanExecuteCloseQueryCommand(object sender, CanExecuteRoutedEventArgs e)
+        private void ExecutedExitCommand(object sender, ExecutedRoutedEventArgs e)
         {
-            //XXX
-            Control target = e.Source as Control;
-            e.CanExecute = true;
+            this.Close();
         }
 
         #endregion commands
